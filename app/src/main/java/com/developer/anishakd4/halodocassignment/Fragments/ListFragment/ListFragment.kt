@@ -36,6 +36,11 @@ class ListFragment : Fragment(), RecyclerViewAdapter.ClickInterFace {
         transaction?.commit()
     }
 
+    override fun onBottomReached() {
+        Log.i("anisham", "bottom reached")
+        viewModel.makeNextApiCall()
+    }
+
     lateinit var viewModel: ListFragmentViewModel
     lateinit var binding: ListFragmentBinding
 

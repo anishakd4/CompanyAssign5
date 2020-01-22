@@ -14,6 +14,8 @@ class RecyclerViewAdapter(val news: List<HitsModel>, val clickInterFace: ClickIn
 
     interface ClickInterFace {
         fun onClickedInAdapter(position: Int);
+
+        fun onBottomReached();
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
@@ -25,6 +27,12 @@ class RecyclerViewAdapter(val news: List<HitsModel>, val clickInterFace: ClickIn
         (holder as RecyclerViewHolder).parent.setOnClickListener {
             if(clickInterFace != null){
                 clickInterFace.onClickedInAdapter(position)
+            }
+        }
+
+        if(position == news.size - 1){
+            if(clickInterFace != null){
+                clickInterFace.onBottomReached()
             }
         }
     }

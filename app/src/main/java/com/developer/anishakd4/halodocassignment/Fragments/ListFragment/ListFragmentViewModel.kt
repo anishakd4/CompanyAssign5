@@ -74,6 +74,10 @@ class ListFragmentViewModel(val database: NewsDao) : ViewModel(){
         }
     }
 
+    fun makeNextApiCall(){
+
+    }
+
     private fun onError(message: String) {
         loadError.value = message
         loading.value = false
