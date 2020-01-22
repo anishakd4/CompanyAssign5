@@ -20,6 +20,12 @@ class DetailFragment : Fragment() {
 
         binding.webview.webViewClient = object : WebViewClient() {
 
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+                binding.loadingView.visibility = View.GONE
+                binding.webview.visibility = View.VISIBLE
+            }
+
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 view?.loadUrl(url)
                 return true
